@@ -15,7 +15,11 @@ public class Solution {
     }
 
     public void helper(List<List<Integer>> result, int[] nums, int index, List<Integer> tmp) {
-    	// why do you need to new ArrayList(tmp) in each recursion. Because if you don't new a arraylist, all the tmp pointed to same one, and the object will be remove element after recursion, so eventually it will became empty. You need to store the current state of the tmp, that is why we need to new ArrayList(tmp), cause it is a global variable.
+    	// why do you need to new ArrayList(tmp) in each recursion. Because if you 
+    	// don't new a arraylist, all the tmp pointed to same one, and the object 
+    	// will be remove element after recursion, so eventually it will became 
+    	// empty. You need to store the current state of the tmp, that is why we 
+    	// need to new ArrayList(tmp), cause it is a global variable.
     	result.add(new ArrayList(tmp)); 
 
     	for (int i = index; i < nums.length; i++) {
