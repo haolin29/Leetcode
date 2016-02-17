@@ -24,7 +24,7 @@ public class Solution {
     	for (int i = pos; i <= n; i++) {
 
     		temp.add(i);
-			// taking care about the pos index, easy to fault
+			// taking care about the pos index, very easy to fault
     		helper(n,k,result,temp,i + 1);
     		temp.remove(temp.size() - 1);
     	}
