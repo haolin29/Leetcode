@@ -1,18 +1,8 @@
-// how to find the middle point
-// while(current.next() != null){
- //          length++;
- //          if(length%2 ==0){
- //              middle = middle.next();
- //          }
- //          current = current.next();
- //      }
-    
- // if(length%2 == 1){
- //          middle = middle.next();
- //      }
 
 
 public class Solution {
+
+	// approach 1: non concise
     public boolean isPalindrome(ListNode head) {
         if(head == null || head.next == null) return true;
         if (head.next.next == null) {
@@ -28,14 +18,57 @@ public class Solution {
         }
         if (len % 2 == 1) mid = mid.next;
 
+        ListNode prev = null;
+
+        while(mid != null) {
+        	ListNode post = mid.next;
+        	mid.next = prev;
+        	prev = mid;
+        	mid = post;
+        }
+
         cur = head;
-        while (mid != null) {
-        	if (cur.val != mid.val) return false;
+        while (prev != null) {
+        	if (cur.val != prev.val) return false;
         	cur = cur.next;
-        	mid = mid.next;
+        	prev = prev.next;
         }
 
         return true;
 
+    }
+    // approach 2: more concise 
+    // 
+    public boolean isPalindrome(ListNode head) {
+    	ListNode fast = head, 
+    			 slow = head;
+
+    	while (fast != null && fast.next != null) {
+    		fast = fast.next.next;
+    		slow = slow.next;
+    	}
+    	if (fast != null) slow = slow.next;
+
+		slow = reverse(slow);
+
+		// bravo!!
+		while (slow != null && head.val == slow.val) {
+			slow = slow.next;
+			head = head.next;
+		}
+
+		return slow == null;
+
+    }
+
+    public ListNode reverse(ListNode head) {
+    	ListNode pre = null;
+    	while (head != null) {
+    		ListNode post = head.next;
+    		head.next = pre;
+    		pre = head;
+    		head = post;
+    	}
+    	return pre;
     }
 }
