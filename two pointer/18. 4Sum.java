@@ -1,5 +1,5 @@
 // you should take care about all duplication cases.
-
+// what if the nums = {1,1,1,1,1,1,1}  target = 4
 public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
