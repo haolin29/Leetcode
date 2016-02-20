@@ -1,4 +1,4 @@
-// you should taking care about all duplication cases.
+// you should take care about all duplication cases.
 
 public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
