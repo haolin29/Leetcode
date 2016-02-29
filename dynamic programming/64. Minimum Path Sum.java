@@ -9,7 +9,7 @@ public class Solution {
         dp[0][0] = grid[0][0];
         
         
-        // corner case if the n = 0, the last one is simply plus together.
+        // initilize and deal with the corner case if the n = 0, the last one is simply plus together.
         for (int i = 1; i < m; i++) {
             dp[i][0] = dp[i - 1][0] + grid[i][0];
         }
