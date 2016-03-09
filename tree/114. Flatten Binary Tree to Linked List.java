@@ -1,7 +1,7 @@
 
 // travseral
 public class Solution {
-	private lastNode = null;
+	private TreeNode lastNode = null;
     public void flatten(TreeNode root) {
     	if (root == null) return;
     	if (lastNode != null) {
