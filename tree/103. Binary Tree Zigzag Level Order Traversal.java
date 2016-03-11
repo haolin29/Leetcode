@@ -22,7 +22,7 @@ public class Solution {
                 if (node.left != null) queue.offer(node.left);
                 if (node.right != null) queue.offer(node.right);
             }
-            order = order ? false : true; // 改变方向
+            order = !order; // 改变方向 elegant way!
             result.add(level);
         }
      
