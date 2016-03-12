@@ -14,7 +14,7 @@ public class Solution {
 
         for (int left = 0, right = 0; right < s.length(); right++ ) {
         	if (map.containsKey(s.charAt(right))) {
-        		left = Math.max(left, map.get(s.charAt(right))+ 1);
+        		left = Math.max(left, map.get(s.charAt(right))+ 1); // keep move forward and let the left pointer to right of the same character last found
 
         	}
 
