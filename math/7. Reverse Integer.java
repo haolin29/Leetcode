@@ -2,6 +2,8 @@
 // what if the last digit is 0
 // what if the reversed integer is overflows, return 0
 // 
+// 
+// module negative number also get negative
 
 public class Solution {
     public int reverse(int x) {
