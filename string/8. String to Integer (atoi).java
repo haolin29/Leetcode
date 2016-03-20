@@ -12,7 +12,7 @@ public class Solution {
         }
 
         str = str.trim();
-        char flag = "+"; // sign
+        char flag = '+';
         int i = 0;
         if (str.charAt(0) == '-') {
         	flag = '-';
@@ -37,12 +37,12 @@ public class Solution {
         	result = -result;
         }
 
-        if (result > Integer.INT_MAX) {
-        	return Integer.INT_MAX;
+        if (result > Integer.MAX_VALUE) {
+        	return Integer.MAX_VALUE;
         }
 
-        if (result < Integer.INT_MIN) {
-        	return Integer.INT_MIN;
+        if (result < Integer.MIN_VALUE) {
+        	return Integer.MIN_VALUE;
         }
 
         return (int)result;
