@@ -1,4 +1,4 @@
-// 一维数组的下标表示横坐标（哪一行），而数组的值表示纵坐标（哪一列）。
+// ArrayList的 i 标示横坐标， get(i) 表示纵坐标
 public class Solution {
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();
@@ -6,22 +6,21 @@ public class Solution {
             return result;
         }
         
-        scanByLine(n,new ArrayList<Integer>(), result);
+        search(n,new ArrayList<Integer>(), result);
         return result;
     }
     
-    public void scanByLine(int n, ArrayList<Integer> cols, List<List<String>> result) {
+    public void search(int n, ArrayList<Integer> cols, List<List<String>> result) {
         if (cols.size() == n) {
             draw(cols,result);
             return;
         }
-        
         for (int i = 0; i < n; i++) {
             if(!isValid(i, cols)) {
                 continue;
             }
             cols.add(i);
-            scanByLine(n, cols, result);
+            search(n, cols, result);
             cols.remove(cols.size() - 1);
         }
     }
@@ -46,10 +45,8 @@ public class Solution {
         int n = cols.size();
         ArrayList<String> line = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            
             String s ="";
             for (int j = 0; j < n; j++) {
-                
                 if (j == cols.get(i)) {
                     s += "Q";
                 } else {
@@ -57,7 +54,6 @@ public class Solution {
                 }
             }
             line.add(s);
-            
         }
         result.add(line);
     }
