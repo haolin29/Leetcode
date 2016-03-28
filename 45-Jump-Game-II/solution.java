@@ -1,3 +1,4 @@
+// 11:30 - 12:47
 public class Solution {
     public int jump(int[] nums) {
         if (nums == null || nums.length == 0) {
