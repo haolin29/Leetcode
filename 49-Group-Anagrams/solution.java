@@ -1,4 +1,4 @@
-// 3:00
+// 3:00 - 3:24
 public class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> result = new ArrayList<>();
