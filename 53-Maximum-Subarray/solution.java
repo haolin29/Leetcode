@@ -8,12 +8,13 @@ public class Solution {
         }
         
         int n = nums.length;
-        int[] sum = new int[n];
-        sum[0] = nums[0];
-        int max = sum[0];
+        //int[] sum = new int[n];
+        int sum = nums[0];
+        //sum[0] = nums[0];
+        int max = sum;
         for (int i = 1; i < n; i++) {
-            sum[i] = Math.max(nums[i], sum[i - 1] + nums[i]);
-            max = Math.max(max, sum[i]);
+            sum = Math.max(nums[i], sum + nums[i]);
+            max = Math.max(max, sum);
         }
         
         return max;
