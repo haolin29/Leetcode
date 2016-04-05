@@ -7,9 +7,9 @@ public class Solution {
             for (int k = 0; k < n; k++) {
                 if (A[i][k] != 0) {
                     for (int j = 0; j < nB; j++) {
-                        //if (B[k][j] != 0) {
+                        if (B[k][j] != 0) {
                             C[i][j] += A[i][k] * B[k][j];
-                        //}
+                        }
                     }
                 }
             }
