@@ -20,8 +20,6 @@ public class Solution {
 
 
 // use a stack to memorize
-// 
-// 	
 	public int kthSmallest(TreeNode root, int k) {
 		Stack<TreeNode> stack = new Stack<>();
 
