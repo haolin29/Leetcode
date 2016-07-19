@@ -1,69 +1,67 @@
 public class Solution {
     public boolean isInterleave(String s1, String s2, String s3) {
-        // if(s1 == null || s2 == null || s3 == null) {
-        //     return false;
-        // }
-        
-        // int n1 = s1.length();
-        // int n2 = s2.length();
-        // int n3 = s3.length();
-        
-        // if (n1 + n2 != n3) {
-        //     return false;
-        // }
-        
-        // boolean[][] dp = new boolean[n1 + 1][n2 + 1];
-        
-        // dp[0][0] = true;
-        
-        // for (int i = 1; i <= n1; i++) {
-        //     if(s1.charAt(i - 1) == s3.charAt(i - 1)) {
-        //         dp[i][0] = dp[i - 1][0];
-        //     }
-        // }
-        
-        // for (int i = 1; i <= n2; i++) {
-        //     if(s2.charAt(i - 1) == s3.charAt(i - 1)) {
-        //         dp[0][i] = dp[0][i - 1];
-        //     }
-        // }
-        
-        // for(int i = 1; i <= n1; i++) {
-        //     for (int j = 1; j <= n2; j++) {
-        //         if(s1.charAt(i - 1) == s3.charAt(i + j - 1)) {
-        //             dp[i][j] = dp[i - 1][j];
-        //         } else if (s2.charAt(j - 1) == s3.charAt(i + j - 1)) {
-        //             dp[i][j] = dp[i][j - 1];
-        //         }
-        //     }
-        // }
-        
-        // return dp[n1][n2];
-        if (s1.length() + s2.length() != s3.length()) {
+        if(s1 == null || s2 == null || s3 == null) {
             return false;
         }
         
-        boolean [][] interleaved = new boolean[s1.length() + 1][s2.length() + 1];
-        interleaved[0][0] = true;
+        int n1 = s1.length();
+        int n2 = s2.length();
+        int n3 = s3.length();
         
-        for (int i = 1; i <= s1.length(); i++) {
-            if(s3.charAt(i - 1) == s1.charAt(i - 1) && interleaved[i - 1][0])
-                interleaved[i][0] = true;
+        if (n1 + n2 != n3) {
+            return false;
         }
         
-        for (int j = 1; j <= s2.length(); j++) {
-            if(s3.charAt(j - 1) == s2.charAt(j - 1) && interleaved[0][j - 1])
-                interleaved[0][j] = true;
-        }
+        boolean[][] dp = new boolean[n1 + 1][n2 + 1];
         
-        for (int i = 1; i <= s1.length(); i++) {
-            for (int j = 1; j <= s2.length(); j++) {
-                if(((s3.charAt(i + j - 1) == s1.charAt(i - 1) && interleaved[i - 1][j]))
-                    || ((s3.charAt(i + j - 1)) == s2.charAt(j - 1) && interleaved[i][j - 1]))
-                interleaved[i][j] = true;
+        dp[0][0] = true;
+        
+        for (int i = 1; i <= n1; i++) {
+            if(s1.charAt(i - 1) == s3.charAt(i - 1)) {
+                dp[i][0] = dp[i - 1][0];
             }
         }
         
-        return interleaved[s1.length()][s2.length()];
+        for (int i = 1; i <= n2; i++) {
+            if(s2.charAt(i - 1) == s3.charAt(i - 1)) {
+                dp[0][i] = dp[0][i - 1];
+            }
+        }
+        
+        for(int i = 1; i <= n1; i++) {
+            for (int j = 1; j <= n2; j++) {
+                if(s1.charAt(i - 1) == s3.charAt(i + j - 1) && dp[i-1][j] || s2.charAt(j - 1) == s3.charAt(i + j - 1) && dp[i][j - 1]) {
+                    dp[i][j] = true;
+                }
+            }
+        }
+        
+        return dp[n1][n2];
+        // if (s1.length() + s2.length() != s3.length()) {
+        //     return false;
+        // }
+        
+        // boolean [][] interleaved = new boolean[s1.length() + 1][s2.length() + 1];
+        // interleaved[0][0] = true;
+        
+        // for (int i = 1; i <= s1.length(); i++) {
+        //     if(s3.charAt(i - 1) == s1.charAt(i - 1) && interleaved[i - 1][0])
+        //         interleaved[i][0] = true;
+        // }
+        
+        // for (int j = 1; j <= s2.length(); j++) {
+        //     if(s3.charAt(j - 1) == s2.charAt(j - 1) && interleaved[0][j - 1])
+        //         interleaved[0][j] = true;
+        // }
+        
+        // for (int i = 1; i <= s1.length(); i++) {
+        //     for (int j = 1; j <= s2.length(); j++) {
+        //         if(((s3.charAt(i + j - 1) == s1.charAt(i - 1) && interleaved[i - 1][j]))
+        //             || ((s3.charAt(i + j - 1)) == s2.charAt(j - 1) && interleaved[i][j - 1]))
+        //         interleaved[i][j] = true;
+        //     }
+        // }
+        
+        // return interleaved[s1.length()][s2.length()];
     }
 }
