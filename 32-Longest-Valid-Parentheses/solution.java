@@ -15,8 +15,8 @@ public class Solution {
                 } else {
                     int matchLens = i - stack.pop() + 1;
                     if(stack.isEmpty()) {
-                        matchLens += start;
-                        start = matchLens;
+                        start += matchLens;
+                        matchLens = start;
                     } else {
                         matchLens = i - stack.peek();
                     }
