@@ -11,14 +11,14 @@ public class Solution {
         }
 
 
-        int prev1 = nums[0];
-        int prev2 = Math.max(nums[0], nums[1]);
+        int prev2 = nums[0];
+        int prev1 = Math.max(nums[0], nums[1]);
 
-        int cur = prev2;
+        int cur = prev1;
         for (int i = 2; i < n; i++) {
-            cur = Math.max(prev1 + nums[i], prev2);
-            prev1 = prev2;
-            prev2 = cur;
+            cur = Math.max(prev2 + nums[i], prev1);
+            prev2 = prev1;
+            prev1 = cur;
         }
 
         return cur;   
