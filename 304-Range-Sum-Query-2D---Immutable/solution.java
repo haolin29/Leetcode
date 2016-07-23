@@ -3,7 +3,7 @@ public class NumMatrix {
     private int[][] f; // the region sum from (0,0) to i,j
     public NumMatrix(int[][] matrix) {
         int m = matrix.length;
-        int n = matrix[0].length > 0 ? matrix[0].length : 0;
+        int n = matrix[0].length != null  ? matrix[0].length : 0;
         
         f = new int[m + 1][n + 1];
         
