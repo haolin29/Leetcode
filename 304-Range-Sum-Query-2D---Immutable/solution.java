@@ -2,8 +2,12 @@ public class NumMatrix {
 
     private int[][] f; // the region sum from (0,0) to i,j
     public NumMatrix(int[][] matrix) {
+        if (matrix == null || matrix.length == 0) {
+            return;
+        }
+        
         int m = matrix.length;
-        int n = matrix[0].length != null  ? matrix[0].length : 0;
+        int n = matrix[0].length;
         
         f = new int[m + 1][n + 1];
         
