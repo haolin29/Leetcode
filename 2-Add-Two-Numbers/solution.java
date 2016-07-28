@@ -14,7 +14,7 @@ public class Solution {
         ListNode cur = dummy;
         while(l1 != null && l2 != null) {
             cur.next = new ListNode((l1.val + l2.val + carry) % 10);
-            carry = (l1.val + l2.val) / 10;
+            carry = (l1.val + l2.val + carry) / 10;
             l1 = l1.next;
             l2 = l2.next;
             cur = cur.next;
@@ -30,8 +30,12 @@ public class Solution {
         while (l2 != null) {
             cur.next = new ListNode((l2.val + carry) % 10);
             carry = (l2.val + carry) / 10;
-            l2 = l1.next;
+            l2 = l2.next;
             cur = cur.next;
+        }
+        
+        if(carry != 0) {
+            cur.next = new ListNode(carry);
         }
         
         return dummy.next;
