@@ -38,7 +38,7 @@ public class Solution {
     public ArrayList<String> getNextWord(String word, Set<String> wordList) {
         ArrayList<String> result = new ArrayList<>();
         
-        for(int i = 0; i < word.length; i++) {
+        for(int i = 0; i < word.length(); i++) {
             for(char c = 'a'; c <= 'z'; c++) {
                 String next = word.substring(0, i) + c + word.substring(i + 1);
                 if(wordList.contains(next)) {
