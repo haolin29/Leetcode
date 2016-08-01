@@ -12,8 +12,8 @@ public class Solution {
         if(root == null || p == null || q == null) {
             return null;
         }
-        TreeNode large = p > q ? p : q;
-        TreeNode small = p < q ? p : q;
+        TreeNode large = (p > q ? p : q);
+        TreeNode small = (p < q ? p : q);
         if(root.val > large) {
             return lowestCommonAncestor(root.left, p,q);
         } else if (root.val < small) {
