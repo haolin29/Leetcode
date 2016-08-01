@@ -15,7 +15,10 @@ public class Solution {
         }
         
         for(char c:t1) {
-            map.put(c, map.get(c) - 1);
+            if (map.containsKey(c)) {
+                map.put(c, map.get(c) - 1);   
+            }
+            
         }
         
         for(Integer i : map.values()) {
