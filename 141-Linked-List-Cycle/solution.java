@@ -23,7 +23,7 @@ public class Solution {
                 return true;
             }
             runner = runner.next.next;
-            waler = walker.next;
+            walker = walker.next;
             
         }
         
