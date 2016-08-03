@@ -22,7 +22,7 @@ public class Solution {
         int lenB = 0;
         
         while(p1 != null) {
-            lenA++
+            lenA++;
             p1 = p1.next;
         }
         
