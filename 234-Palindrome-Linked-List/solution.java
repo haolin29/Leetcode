@@ -12,51 +12,51 @@ public class Solution {
             return true;
         }
         
-        ListNode left = head, right = findMiddle(head);
+        ListNode left = head, right = head;
         
-        while(left.next != right) {
+        Stack<Integer> stack = new Stack<>();
+        
+        while(right != null && right.next != null) {
+            stack.push(left.val);
             left = left.next;
+            right = right.next.next;
         }
-        
-        left.next = null;
-        
-        right = reverse(right);
-        
-        left = head;
-        while(left != null && right != null) {
-            if(left.val != right.val) {
+        if(right != null) stack.pop();
+        while(left != null) {
+            if(stack.pop() != left.val) {
                 return false;
             }
+            
             left = left.next;
-            right = right.next;
         }
         
         return true;
+        
 
         
     }
     
-    public ListNode findMiddle(ListNode head) {
-        ListNode left = head, right = head;
+    // public ListNode findMiddle(ListNode head) {
+    //     ListNode left = head, right = head;
         
-        while(right != null && right.next != null) {
-            left = left.next;
-            right = right.next.next;
-        }
+    //     while(right != null && right.next != null) {
+    //         left = left.next;
+    //         right = right.next.next;
+    //     }
         
-        return left;
-    }
+    //     return left;
+    // }
     
-    public ListNode reverse(ListNode head) {
-        if(head == null || head.next == null) {
-            return head;
-        }
+    // public ListNode reverse(ListNode head) {
+    //     if(head == null || head.next == null) {
+    //         return head;
+    //     }
         
-        ListNode next = head.next;
-        ListNode newHead = reverse(next);
-        next.next = head;
-        head = null;
+    //     ListNode next = head.next;
+    //     ListNode newHead = reverse(next);
+    //     next.next = head;
+    //     head = null;
         
-        return newHead;
-    }
+    //     return newHead;
+    // }
 }
