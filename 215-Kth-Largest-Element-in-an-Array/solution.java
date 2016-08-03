@@ -4,16 +4,16 @@ public class Solution {
             return -1;
         }
         
-        PriorityQueue<Integer> heap = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> heap = new PriorityQueue<>(k);
         
         for(int num : nums) {
             heap.offer(num);
+            
+            if(heap.size() > k) {
+                heap.poll();
+            }
         }
         
-        for(int i = 0; i < k - 1; i++) {
-            heap.poll();
-        }
-        
-        return heap.poll();
+        return heap.peek();
     }
 }
