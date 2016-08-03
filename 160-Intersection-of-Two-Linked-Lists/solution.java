@@ -27,7 +27,7 @@ public class Solution {
         }
         
         while(p2 != null) {
-            lenB++
+            lenB++;
             p2 = p2.next;
         }
         
