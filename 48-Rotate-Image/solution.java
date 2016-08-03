@@ -9,8 +9,8 @@ public class Solution {
         
         for (int layer = 0; layer < layerNum; layer++) {
             for(int i = layer; i < n - layer - 1; i++) {
-                int temp = matrix[layer][n - i];
-                matrix[layer][n - i] = matrix[n - layer - 1][i];
+                int temp = matrix[layer][i];
+                matrix[layer][i] = matrix[n - layer - 1][i];
                 matrix[n - 1 - layer][i] = matrix[n - 1 - layer][n - i];
                 matrix[n - 1 - layer][n - i] = matrix[i][n - 1 - layer];
                 matrix[i][n - 1 - layer] = temp;
