@@ -13,33 +13,27 @@ public class Solution {
         if(root == null) {
             return true;
         }
-        traversal(root);
-        return isAscend();
+        list.add(null);
+        return traversal(root);
     }
     
-    public void traversal(TreeNode root) {
+    public boolean traversal(TreeNode root) {
         if(root == null) {
-            return;
+            return true;
         }
         
-        traversal(root.left);
+        boolean left = traversal(root.left);
         
-        list.add(root.val);
+        if(list.get(0) != null && root.val <= list.get(0)) {
+            return false;
+        }
         
-        traversal(root.right);
+        list.set(0, root.val);
+        
+        boolean right = traversal(root.right);
+        return left && right;
         
     }
     
-    public boolean isAscend() {
-        int prev = list.get(0);
-        for(int i = 1; i < list.size(); i++) {
-            if(list.get(i) <= prev) {
-                return false;
-            }
-            
-            prev = list.get(i);
-        }
-        
-        return true;
-    }
+
 }
