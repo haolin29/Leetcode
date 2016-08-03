@@ -4,8 +4,16 @@ public class Solution {
             return -1;
         }
         
-        Arrays.sort(nums);
+        PriorityQueue<Integer> heap = new PriorityQueue<>(Collections.reverseOrder());
         
-        return nums[nums.length - k];
+        for(int num : nums) {
+            heap.offer(num);
+        }
+        
+        for(int i = 0; i < k - 1; i++) {
+            heap.poll();
+        }
+        
+        return heap.poll();
     }
 }
