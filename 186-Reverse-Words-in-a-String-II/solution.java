@@ -5,13 +5,12 @@ public class Solution {
         }
         
         int start = 0;
-        int end = s.length - 1;
+        
         for(int i = 0; i < s.length; i++) {
             if(i == s.length - 1) {
                 reverse(s, start, i);
             } else if(s[i] == ' ') {
-                end = i - 1;
-                reverse(s,start,end);
+                reverse(s,start,i - 1);
                 start = i + 1;
             }
         }
