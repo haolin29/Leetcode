@@ -21,6 +21,9 @@ public class Solution {
                 String curWord = q.poll();
                 ArrayList<String> adjacentWord = getNextWord(curWord, wordList);
                 for(String nextWord:adjacentWord) {
+                    if(set.contains(nextWord)) {
+                        continue;
+                    }
                     if(nextWord.equals(endWord)) {
                         return step;
                     } 
