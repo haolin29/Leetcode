@@ -9,7 +9,7 @@ public class Solution {
         for(int i = 0; i < s.length; i++) {
             if(i == s.length - 1) {
                 reverse(s, start, end);
-            } else if([i] == ' ') {
+            } else if(s[i] == ' ') {
                 end = i - 1;
                 reverse(s,start,end);
                 start = i + 1;
