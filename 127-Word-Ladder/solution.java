@@ -1,6 +1,6 @@
 public class Solution {
     public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
-        if(start==null || end==null || start.length()==0 || end.length()==0 || start.length()!=end.length())  
+        if(beginWord ==null || endWord==null || beginWord.length()==0 || endWord.length()==0 || beginWord.length()!=endWord.length())  
             return 0;  
         
         // bfs, find the adjacent word
