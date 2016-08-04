@@ -8,7 +8,7 @@ public class Solution {
         int end = -1;
         for(int i = 0; i < s.length; i++) {
             if(i == s.length - 1) {
-                reverse(s, start, end)
+                reverse(s, start, end);
             } else if([i] == ' ') {
                 end = i - 1;
                 reverse(s,start,end);
@@ -16,7 +16,7 @@ public class Solution {
             }
         }
         
-        reverse(s,0,s.length);
+        reverse(s,0,s.length - 1);
         
         
     }
