@@ -46,8 +46,10 @@ public class Twitter {
         PriorityQueue<Tweet> pq = new PriorityQueue<>((a,b) -> (b.timeStamp - a.timeStamp)); 
         for(Integer oneUser : set) {
             List<Tweet> list = post.get(oneUser);
-            for(Tweet oneTweet : list) {
-                pq.add(oneTweet);
+            if (list != null) {
+                for(Tweet oneTweet : list) {
+                    pq.add(oneTweet);
+                }
             }
         }
         
