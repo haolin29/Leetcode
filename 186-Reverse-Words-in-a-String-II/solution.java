@@ -5,10 +5,10 @@ public class Solution {
         }
         
         int start = 0;
-        int end = -1;
+        int end = s.length - 1;
         for(int i = 0; i < s.length; i++) {
             if(i == s.length - 1) {
-                reverse(s, start, end);
+                reverse(s, start, i);
             } else if(s[i] == ' ') {
                 end = i - 1;
                 reverse(s,start,end);
@@ -21,9 +21,9 @@ public class Solution {
         
     }
     
-    public void reverse(int[] A, int start, int end) {
+    public void reverse(char[] A, int start, int end) {
         for(;start < end; start++, end--) {
-            int temp = A[end];
+            char temp = A[end];
             A[end] = A[start];
             A[start] = temp;
         }
