@@ -1,37 +1,43 @@
 public class Solution {
     public String multiply(String num1, String num2) {
-        if (num1 == null || num2 == null) {
-            return null; 
+        if(num1 == null && num2 == null ) {
+            return null;
         }
         
-        int len1 = num1.length(), len2 = num2.length();
-        int len3 = len1 + len2;
-        int i, j, product, carry;
+        if(num1.charAt(0) == '0' || num2.charAt(0) == '0') {
+            return "0";
+        }
         
-        int[] num = new int[len3];
+        num1 = new StringBuilder(num1).reverse().toString();
+        num2 = new StringBuilder(num2).reverse().toString();
         
-        for (i = len1 - 1; i >= 0; i--) {
-            carry = 0;
-            for(j = len2 - 1; j >= 0; j--) {
-                product = carry + num[i + j + 1] +
-                    Character.getNumericValue(num1.charAt(i)) *
-                    Character.getNumericValue(num2.charAt(j));
-                num[i+j+1] = product % 10;
-                carry = product / 10;
+        int n = num1.length();
+        int m = num2.length();
+        int[] d = new int[n + m];
+        
+        for(int i = 0; i < n; i++) {
+            int a = num1.charAt(i) - '0';
+            for(int j = 0; j < m; j++) {
+                int b = num2.charAt(j) - '0';
+                d[i + j] += a * b;
             }
-            num[i+j+1] = carry;
         }
         
         StringBuilder sb = new StringBuilder();
-        i = 0;
-        while(i < len3 - 1 && num[i] == 0) {
-            i++;
+        int carry = 0;
+        for(int i = 0; i < d.length; i++) {
+            int digit = (d[i] + carry ) % 10;
+            carry = (d[i] + carry ) / 10;
+            
+            sb.insert(0, digit);
         }
         
-        while (i < len3) {
-            sb.append(num[i++]);
+        // trim starting zero
+        while(sb.length() != 0 && sb.charAt(0) == '0') {
+            sb.deleteCharAt(0);
         }
         
         return sb.toString();
+        
     }
 }
