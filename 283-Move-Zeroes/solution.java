@@ -16,7 +16,7 @@ public class Solution {
                 p2++;
             }
             
-            if(p1 >= n - 1) break;
+            if(p1 >= n - 1 || p2 == n) break;
             
             int temp = nums[p1];
             nums[p1] = nums[p2];
