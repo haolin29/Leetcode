@@ -9,7 +9,7 @@ public class Solution {
             } else {
                 nums[i] = nums[j];
                 i++;
-                j++
+                j++;
             }
         }
         
