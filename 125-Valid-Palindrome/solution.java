@@ -42,10 +42,10 @@ public class Solution {
     }
     
     public boolean isAlphanumeric(char c) {
-        if(((c - 'a') >= 0 &&  (c - 'a') <= 26) || ((c - 'A') >= 0 &&  (c - 'A') <= 26) || 
-            ((c - '0') >= 0 &&  (c - '0') <= 9) ) {
-                return true;
-            } 
+        if ((c >= 'a' && c <= 'z' ) || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) {
+            return true;
+        }
+        
         return false;
     }
 }
