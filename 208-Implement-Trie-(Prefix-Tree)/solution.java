@@ -9,7 +9,7 @@ class TrieNode {
         
         TrieNode(char c) {
             this.c = c;
-        }
+        };
     }
 }
 
