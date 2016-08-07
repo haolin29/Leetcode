@@ -21,9 +21,10 @@ public class Solution {
             index++;
         }
         
-        newInterval.start = Math.min(intervals.get(index).start, newInterval.start);
+        
         
         while(index < intervals.size() && intervals.get(index).start <= newInterval.end) {
+            newInterval.start = Math.min(intervals.get(index).start, newInterval.start);
             newInterval.end = Math.max(intervals.get(index).end, newInterval.end);
             index++;
         }
