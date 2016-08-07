@@ -5,11 +5,11 @@ class TrieNode {
         HashMap<Character, TrieNode> children = new HashMap<>();
         boolean isLeaf;
         
-        TrieNode(){};
+        TrieNode(){}
         
         TrieNode(char c) {
             this.c = c;
-        };
+        }
     }
 }
 
