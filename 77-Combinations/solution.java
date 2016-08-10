@@ -1,7 +1,7 @@
 public class Solution {
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> result = new ArrayList<>();
-        if(n < 1) {
+        if(n < k) {
             return result;
         }
         
