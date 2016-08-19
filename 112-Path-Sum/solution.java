@@ -10,22 +10,14 @@
 public class Solution {
     public boolean hasPathSum(TreeNode root, int sum) {
         if(root == null) return false;
-        return helper(root, sum, 0);
-    }
-    
-    public boolean helper(TreeNode root, int sum, int path) {
-        if(root == null) {
-            return false;
-        }
         
-        path += root.val;
-        
-        if(root.left == null && root.right == null && path == sum) {
+        if(root.left == null && root.right == null && root.val == sum) {
             return true;
         }
         
-        
-        return helper(root.left, sum, path) || helper(root.right, sum, path);
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val) ;
     }
+    
+
     
 }
