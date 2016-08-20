@@ -13,16 +13,15 @@ public class Solution {
             return 0;
         }
         
-        int left = minDepth(root.left);
-        int right = minDepth(root.right);
-        
-        int min = 0;
-        if (left > 0 && right > 0) {
-            min = Math.min(left, right);
-        } else {
-            min = left == 0 ? right : left;
+        if(root.left == null) {
+            return minDepth(root.right) + 1;
         }
-        return min + 1;
+        
+        if(root.right == null) {
+            return minDepth(root.left) + 1;
+        }
+        
+        return Math.min( minDepth(root.left), minDepth(root.right) ) + 1;
         
     }
 }
