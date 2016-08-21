@@ -36,15 +36,7 @@ public class Solution {
         int row = cols.size();
         
         for(int i = 0; i < cols.size(); i++) {
-            if(col == cols.get(i)) {
-                return false;
-            }
-            
-            if(i + cols.get(i) == col + row) {
-                return false;
-            }
-            
-            if(i - cols.get(i) == row - col) {
+            if(col == cols.get(i) || Math.abs(i - row) == Math.abs(cols.get(i) - col) ) {
                 return false;
             }
         }
