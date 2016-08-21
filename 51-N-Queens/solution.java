@@ -1,60 +1,73 @@
-// ArrayList的 i 标示横坐标， get(i) 表示纵坐标
 public class Solution {
+    
+    
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();
-        if (n <= 0) {
+        
+        if(n < 1) {
             return result;
         }
         
-        search(n,new ArrayList<Integer>(), result);
+        List<Integer> cols = new ArrayList<>();
+        dfs(n, result, cols);
+        
         return result;
+        
     }
     
-    public void search(int n, ArrayList<Integer> cols, List<List<String>> result) {
-        if (cols.size() == n) {
-            draw(cols,result);
+    public void dfs(int n, List<List<String>> result, List<Integer> cols) {
+        if(cols.size() == n) {
+            result.add(drawBoard(cols));
             return;
         }
-        for (int i = 0; i < n; i++) {
-            if(!isValid(i, cols)) {
+        
+        for(int i = 0; i < n; i++) {
+            if(!isValid(cols, i)) {
                 continue;
             }
+            
             cols.add(i);
-            search(n, cols, result);
+            dfs(n, result, cols);
             cols.remove(cols.size() - 1);
         }
     }
     
-    public boolean isValid(int col, ArrayList<Integer> cols) {
+    public boolean isValid(List<Integer> cols, int col) {
         int row = cols.size();
-        for (int i = 0; i < row; i++) {
-            if (cols.get(i) == col) {
+        
+        for(int i = 0; i < cols.size(); i++) {
+            if(col == cols.get(i)) {
                 return false;
             }
-            if (row - col == i - cols.get(i)) {
+            
+            if(i + cols.get(i) == col + row) {
                 return false;
             }
-            if (row + col == i + cols.get(i)) {
+            
+            if(i - cols.get(i) == row - col) {
                 return false;
             }
         }
+        
         return true;
     }
     
-    public void draw(ArrayList<Integer> cols, List<List<String>> result) {
-        int n = cols.size();
-        ArrayList<String> line = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            String s ="";
-            for (int j = 0; j < n; j++) {
-                if (j == cols.get(i)) {
-                    s += "Q";
+    public List<String> drawBoard(List<Integer> cols) {
+        List<String> sol = new ArrayList<>();
+        
+        for(int i = 0; i < cols.size(); i++) {
+            String str = "";
+            for(int j = 0; j < cols.size(); j++) {
+                if(cols.get(i) == j) {
+                    str += "Q";
                 } else {
-                    s += ".";
+                    str += ".";
                 }
             }
-            line.add(s);
+            
+            sol.add(str);
         }
-        result.add(line);
-    }
+        
+        return sol;
+    } 
 }
