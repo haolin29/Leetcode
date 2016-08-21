@@ -1,47 +1,57 @@
 public class Solution {
     public List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<>();
-        List<String> list = new ArrayList<>();
         
-        if (s.length() < 4 || s.length() > 12) {
+        if(s == null || s.length() == 0) {
             return result;
         }
-        helper(result, list, s, 0);
+        
+        dfs(s, "", result, 0, 1);
+        
         return result;
     }
     
-    public void helper(List<String> result, List<String> list, String s, int start) {
-        if (list.size() == 4) {
-            if (start != s.length()) {
-                return;
-            } 
-            StringBuilder sb = new StringBuilder();
-            for (String t: list) {
-                sb.append(t);
-                sb.append(".");
-            }
-            sb.deleteCharAt(sb.length() - 1);
-            result.add(sb.toString());
+    public void dfs(String s, String item, List<String> result, int index, int segment) {
+        if(index >= s.length()) {
+            return;
         }
         
-        for (int i = start; i < s.length() && i < start + 3; i++) {
-            String tmp = s.substring(start,i+1);
-            if(isValid(tmp)){
-                list.add(tmp);
-                helper(result,list,s,i+1);
-                list.remove(list.size() - 1);
+        if(segment == 4 ) {
+            String str = s.substring(index);
+            if(isValid(str)) {
+                result.add(item + "." + str);
+            }
+            return;
+        }
+        
+        for(int i = 1; i < 4 && (index + i <= s.length()); i++ ) {
+            String str = s.substring(index, index + i);
+            
+            if(isValid(str)) {
+                if(segment == 1) {
+                    dfs(s, str, result, index + i, segment + 1 );
+                } else {
+                    dfs(s, item + "." + str, result, index + i, segment + 1);
+                }
             }
         }
     }
     
     public boolean isValid(String s) {
-        if (s.charAt(0) == '0') {
-            return s.equals("0");
-        } else {
-            int digits = Integer.valueOf(s);
-            return digits >= 0 && digits <= 255;
+        if(s == null || s.length() > 3) {
+            return false;
         }
         
+        int num = Integer.parseInt(s);
         
+        if(s.charAt(0) == '0' && s.length() > 1) {
+            return false;
+        }
+        
+        if(num >= 0 && num <= 255) {
+            return true;
+        }
+        
+        return false;
     }
 }
