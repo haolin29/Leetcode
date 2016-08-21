@@ -1,45 +1,45 @@
 public class Solution {
-    // key point: use a 1-d array to representation by the position as row and the value as col.
-    public static int result;
+    
+    int count;
     public int totalNQueens(int n) {
-        if (n <= 0) {
+        if(n < 1) {
             return 0;
         }
-        result = 0;
-        searchDown(n, new ArrayList<>());
-        return result;
+        count = 0;
+        List<Integer> cols = new ArrayList<>();
+        dfs(n, cols);
+        
+        return count;
+        
     }
     
-    public void searchDown(int n, ArrayList<Integer> cols) {
-        // base case 
-        if (cols.size() == n) {
-            result++;
+    public void dfs(int n, List<Integer> cols) {
+        if(cols.size() == n) {
+            count++;
             return;
         }
         
-        for (int i = 0; i < n; i++) {
-            if (!isValid(i, cols)) {
+        for(int i = 0; i < n; i++) {
+            if(!isValid(cols, i)) {
                 continue;
             }
+            
             cols.add(i);
-            searchDown(n, cols);
+            dfs(n, cols);
             cols.remove(cols.size() - 1);
         }
     }
     
-    public boolean isValid(int col, ArrayList<Integer> cols) {
+    public boolean isValid(List<Integer> cols, int col) {
         int row = cols.size();
-        for (int i = 0; i < row; i++) {
-            if (cols.get(i) == col) {
-                return false;
-            }
-            if (row - col == i - cols.get(i) ) {
-                return false;
-            }
-            if (row + col == i + cols.get(i) ) {
+        
+        for(int i = 0; i < cols.size(); i++) {
+            if(col == cols.get(i) || Math.abs(i - row) == Math.abs(cols.get(i) - col) ) {
                 return false;
             }
         }
+        
         return true;
     }
+    
 }
