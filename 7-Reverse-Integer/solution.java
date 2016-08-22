@@ -4,26 +4,21 @@ public class Solution {
             return 0;
         }
         
-        boolean neg = false;
+        int num = x;
         
-        if(x < 0) {
-            neg = true;
-            x = -x;
-        }
+        x = Math.abs(x);
         
-        long result = 0;
-        
+        int result = 0;
         while(x != 0) {
-            int digit = x % 10;
+            if(result > (Integer.MAX_VALUE - x % 10) / 10) {
+                return 0;
+            }
+            
+            result = result * 10 + x % 10;
             x /= 10;
-            result *= 10;
-            result += digit;
         }
         
-        if(result > Integer.MAX_VALUE) {
-            return 0;
-        }
+        return num > 0 ? result : -result;
         
-        return neg ? -(int)result : (int)result;
     }
 }
