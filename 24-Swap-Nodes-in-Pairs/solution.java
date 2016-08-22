@@ -18,12 +18,16 @@ public class Solution {
         ListNode cur = dummy;
         
         while(cur.next != null && cur.next.next != null) {
-            ListNode temp = cur.next;
-            ListNode post = cur.next.next.next;
-            cur.next = cur.next.next;
-            cur.next.next = temp;
-            cur.next.next.next = post;
-            cur = cur.next.next;
+            ListNode n1 = cur.next, n2 = cur.next.next;
+            
+            // cur -> n1 -> n2 -> ...
+            // cur -> n2 -> n1 -> ...
+            
+            n1.next = n2.next;
+            n2.next = n1;
+            cur.next = n2;
+            
+            cur = n1;
         }
         
         return dummy.next;
