@@ -4,18 +4,14 @@ public class Solution {
             return 0;
         }
         
-        int count = 0;
+        int p1 = s.length() - 1;
         
-        s = s.trim();
+        while(p1 >= 0 && s.charAt(p1) == ' ') p1--;
         
-        for(int i = s.length() - 1; i >= 0; i-- ) {
-            if(s.charAt(i) != ' ') {
-                count++;
-            } else {
-                break;
-            }
-        }
+        int p2 = p1;
+        while(p2 >= 0 && s.charAt(p2) != ' ') p2--;
         
-        return count;
+        return p1 - p2;
+    
     }
 }
