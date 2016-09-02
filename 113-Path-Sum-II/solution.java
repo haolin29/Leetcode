@@ -18,7 +18,6 @@ public class Solution {
         List<Integer> path = new ArrayList<>();
         path.add(root.val);
         dfs(root, sum - root.val, result, path);
-        
         return result;
     }
     
@@ -31,6 +30,7 @@ public class Solution {
             result.add(new ArrayList(path));
             return;
         }
+        
         if(root.left != null) {
             path.add(root.left.val);
             dfs(root.left, sum - root.left.val, result, path);
